@@ -23,21 +23,26 @@ def calculate_correlations(data_frame):
     Description: This method calculates all the correlations with the sickness column, and picks out the item
     that has the highest correlation, and the item that has the lowest correlation.
     """
+
+    data_frame = data_frame.drop(columns=['ID'])
     correlations = data_frame.corr()
-    sick_corrs = correlations['Sickness']
+
+
+    print(correlations)
+   # sick_corrs = correlations['Sickness']
     max_corr = -1
     min_corr = 1
     max_index = 0
     min_index = 0
     index = 0
-    for corr in sick_corrs:
-        if corr > max_corr and corr != 1:
-            max_corr = corr
-            max_index = index
-        elif corr < min_corr and corr != -1:
-            min_corr = corr
-            min_index = index
-        index += 1
+    # for corr in sick_corrs:
+    #     if corr > max_corr and corr != 1:
+    #         max_corr = corr
+    #         max_index = index
+    #     elif corr < min_corr and corr != -1:
+    #         min_corr = corr
+    #         min_index = index
+    #     index += 1
 
     return max_corr, max_index, min_corr, min_index
 
@@ -66,5 +71,10 @@ if __name__ == '__main__':
         print("Please Enter in the data file's name as a parameter.")
         exit(1)
     data_frame = pd.read_csv(training_file)
+
+    calculate_correlations(data_frame)
+
+
+
 
 

@@ -29,6 +29,7 @@ def calculate_correlations(data_frame):
 
 
     print(correlations)
+    correlations.to_csv('correlations.csv', index=False)
    # sick_corrs = correlations['Sickness']
     max_corr = -1
     min_corr = 1

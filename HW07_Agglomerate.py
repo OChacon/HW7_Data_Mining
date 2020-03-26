@@ -71,7 +71,8 @@ if __name__ == '__main__':
         print("Please Enter in the data file's name as a parameter.")
         exit(1)
     data_frame = pd.read_csv(training_file)
-
+    pd.set_option('display.max_rows', 1000)
+    pd.set_option('display.max_columns', 1000)
     calculate_correlations(data_frame)
 
 

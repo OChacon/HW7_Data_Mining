@@ -120,7 +120,8 @@ def calculate_correlations(data_frame):
     print('The second attribute that is least correlated with all other attributes is ' +
           second_lowest_average_attr_name + ' with an average correlation value of ' + str(second_lowest_average_value))
 
-    agglomeration(correlations)
+    agglomeration(data_frame)
+    #Send max corr features as well
 
 
 def agglomeration(correlations):

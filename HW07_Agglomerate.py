@@ -120,6 +120,15 @@ def calculate_correlations(data_frame):
     print('The second attribute that is least correlated with all other attributes is ' +
           second_lowest_average_attr_name + ' with an average correlation value of ' + str(second_lowest_average_value))
 
+    agglomeration(correlations)
+
+
+def agglomeration(correlations):
+    clusters_list = []
+    for item in correlations:
+        clusters_list.append([])
+
+
 
 if __name__ == '__main__':
     """

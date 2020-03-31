@@ -19,10 +19,9 @@ def calculate_correlations(data_frame):
     Description: This method calculates all the correlations with the sickness column, and picks out the item
     that has the highest correlation, and the item that has the lowest correlation.
     """
-    data_frame = data_frame.drop(columns=['ID'])
-    correlations = data_frame.corr()
+    no_ids = data_frame.drop(columns=['ID'])
+    correlations = no_ids.corr()
     list_of_column_names = list(correlations.columns.values)
-    # Min is rice with soda
     # print(correlations)
     # correlations.to_csv('correlations.csv', index=False)
 
@@ -120,15 +119,37 @@ def calculate_correlations(data_frame):
     print('The second attribute that is least correlated with all other attributes is ' +
           second_lowest_average_attr_name + ' with an average correlation value of ' + str(second_lowest_average_value))
 
-    agglomeration(data_frame)
-    #Send max corr features as well
+    # agglomeration(data_frame)
 
 
-def agglomeration(correlations):
+def agglomeration(data_frame):
+    vegis = 19
+    family = 4
+    hispanic = 18
+    fish = 8
+    party = 5
+    gluten_free = 2
     clusters_list = []
-    for item in correlations:
-        clusters_list.append([])
+    for row in data_frame.iterrows():
+        series = row[1]
+        vegi_val = series[vegis]
+        family_val = series[family]
+        hispanic_val = series[hispanic]
+        fish_val = series[fish]
+        party_val = series[party]
+        gluten_free_val = series[gluten_free]
 
+    """
+    Note to whom it may concern:
+    We weren't able to fully implement our agglomeration function. Our initial idea was to select an attribute to 
+    represent one of the six final prototypes, as seen above. We thought that by comparing the count per attribute per 
+    entry and finding the Euclidean distance between each attribute's values, we could classify each entry as one of 
+    the six clusters, and then recalculate and merge until we go through all of the entries. We realized that this would
+    pre-classify the clusters and simply group the like minded shoppers together, instead of allowing the agglomeration 
+    algorithm to work until completion, and then find the 6 clusters from those results. We feel that we understand how 
+    agglomeration can create and join these clusters, we simply had a hard time wrapping our heads around implementing 
+    this specific data into what we needed to begin agglomeration. 
+    """
 
 
 if __name__ == '__main__':
